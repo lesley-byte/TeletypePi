@@ -111,7 +111,7 @@ while True:
                           )"""
                 print(keymap[keycode_LUT.index(key_event.key_number)][1])
 
-        if key_event.released:
+        if key_event.released:  # I don't think the code is even getting to this point...i want it to revert back to the main layer automatically but not yet
             if keymap[keycode_LUT.index(key_event.key_number)][0] == 1:  # un-shift
                 shift_mod = False
                 keymap = keymap1
