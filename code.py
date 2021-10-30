@@ -67,6 +67,8 @@ while True:
             elif keymap[keycode_LUT.index(key_event.key_number)][0] == 3:
                 shift_mod = False
                 keymap = keymap1
+                # somewhere here i need to unshift maybe?
+                        
             if shift_mod is False and ctrl_mod is False:
                 # kbd.press(keymap[keycode_LUT.index(key_event.key_number)][1])
                 if isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), str):  # If it's a string...
@@ -78,6 +80,7 @@ while True:
                 elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), (list, tuple)):  # If its multiple keys
                     keyboard.press(*(keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
                     keyboard.release_all()  # ..."Release"
+                print(keymap[keycode_LUT.index(key_event.key_number)][1])
             elif shift_mod is True and ctrl_mod is False:
                 # kbd.press(Keycode.SHIFT, keymap[keycode_LUT.index(key_event.key_number)][1])
                 
@@ -86,7 +89,7 @@ while True:
                 elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), int):  # If its a single key
                     keyboard.press((keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
                     keyboard.release_all()  # ..."Release"!
-                    
+                
                 elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), (list, tuple)):  # If its multiple keys
                     keyboard.press(*(keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
                     keyboard.release_all()  # ..."Release"
@@ -111,10 +114,15 @@ while True:
                           )"""
                 print(keymap[keycode_LUT.index(key_event.key_number)][1])
 
-        if key_event.released:  # I don't think the code is even getting to this point...i want it to revert back to the main layer automatically but not yet
-            if keymap[keycode_LUT.index(key_event.key_number)][0] == 1:  # un-shift
+        if key_event.released: 
+            print("i'm actually registering a release")
+            #if keymap[keycode_LUT.index(key_event.key_number)][0] == 1:  # un-shift
+            if (key_event.key_number) == 1:  # un-shift# un-shift  *******************you have to ask it about key_event.key_number if you want to ask if a specific key was released!!!!
                 shift_mod = False
                 keymap = keymap1
+                print("im actually registering an un-shift")
+                print(key_event)
+                print(key_event.key_number)
             elif keymap[keycode_LUT.index(key_event.key_number)][0] == 2:  # un-ctrl
                 ctrl_mod = False
                 keymap = keymap1
