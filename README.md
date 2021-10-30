@@ -1,2 +1,4 @@
 # TeletypePi
-experiments in a strange keyboard
+Experiments in a vintage teletype layout for a keyboard.
+
+
