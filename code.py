@@ -23,10 +23,10 @@ keycode_LUT = [  # The addresses that the microcontroller gives to the keys.
     62,
 ]
 keymap = {  # The assignment of keyboard values to the addresses above
-    (0): (0, "My"),
-    (1): (0, "Name"),
-    (2): (0, "Is"),
-    (3): (0, "Lesley"),
+    (0): (0, "My "),
+    (1): (0, "Name "),
+    (2): (0, "Is "),
+    (3): (0, "Lesley "),
     (4): (0, Keycode.FIVE),
     (5): (0, Keycode.SIX),
     (6): (0, Keycode.SEVEN),
@@ -34,21 +34,63 @@ keymap = {  # The assignment of keyboard values to the addresses above
     (8): (0, (Keycode.CONTROL, Keycode.A)),
     (9): (0, Keycode.ZERO),
 }
-    
+shift_mod = False
+ctrl_mod = False  
+  
 while True:
 
     key_event = keys.events.get()
     if key_event:
         if key_event.pressed:
-            #kbd.press(keymap[keycode_LUT.index(key_event.key_number)][1])
-            if isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), str):  # If it's a string...
-                keyboard_layout.write((keymap[keycode_LUT.index(key_event.key_number)][1]))  # ...Print the string
-            elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), int):  # If its a single key
-                keyboard.press((keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
-                keyboard.release_all()  # ..."Release"!
-            elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), (list, tuple)):  # If its multiple keys
-                keyboard.press(*(keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
-                keyboard.release_all()  # ..."Release"!
-            time.sleep(0.1)
-            print(keymap[keycode_LUT.index(key_event.key_number)][1])
-            kbd.release_all()
+            if keymap[keycode_LUT.index(key_event.key_number)][0] == 1:
+                shift_mod = True
+            elif keymap[keycode_LUT.index(key_event.key_number)][0] == 2:
+                ctrl_mod = True
+            if shift_mod is False and ctrl_mod is False:
+                # kbd.press(keymap[keycode_LUT.index(key_event.key_number)][1])
+                if isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), str):  # If it's a string...
+                    keyboard_layout.write((keymap[keycode_LUT.index(key_event.key_number)][1]))  # ...Print the string
+                elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), int):  # If its a single key
+                    keyboard.press((keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
+                    keyboard.release_all()  # ..."Release"!
+                elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), (list, tuple)):  # If its multiple keys
+                    keyboard.press(*(keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
+                    keyboard.release_all()  # ..."Release"
+            elif shift_mod is True and ctrl_mod is False:
+                # kbd.press(Keycode.SHIFT, keymap[keycode_LUT.index(key_event.key_number)][1])
+                if isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), str):  # If it's a string...
+                    keyboard_layout.write(Keycode.SHIFT,(keymap[keycode_LUT.index(key_event.key_number)][1]))  # ...Print the string
+                elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), int):  # If its a single key
+                    keyboard.press(Keycode.SHIFT,(keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
+                    keyboard.release_all()  # ..."Release"!
+                elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), (list, tuple)):  # If its multiple keys
+                    keyboard.press(*(keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
+                    keyboard.release_all()  # ..."Release"
+                print(keymap[keycode_LUT.index(key_event.key_number)][1])
+            elif shift_mod is False and ctrl_mod is True:
+                # kbd.press(Keycode.CONTROL, keymap[keycode_LUT.index(key_event.key_number)][1])
+                if isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), str):  # If it's a string...
+                    keyboard_layout.write(Keycode.CONTROL,(keymap[keycode_LUT.index(key_event.key_number)][1]))  # ...Print the string
+                elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), int):  # If its a single key
+                    keyboard.press(Keycode.CONTROL,(keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
+                    keyboard.release_all()  # ..."Release"!
+                elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), (list, tuple)):  # If its multiple keys
+                    keyboard.press(*(keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
+                    keyboard.release_all()  # ..."Release"
+                print(keymap[keycode_LUT.index(key_event.key_number)][1])
+            elif shift_mod is True and ctrl_mod is True:
+                """kbd.press(
+                          Keycode.SHIFT,
+                          Keycode.CONTROL,
+                          keymap[keycode_LUT.index(key_event.key_number)][1]
+                          )"""
+                print(keymap[keycode_LUT.index(key_event.key_number)][1])
+
+        if key_event.released:
+            if keymap[keycode_LUT.index(key_event.key_number)][0] == 1:  # un-shift
+                shift_mod = False
+            elif keymap[keycode_LUT.index(key_event.key_number)][0] == 2:  # un-ctrl
+                ctrl_mod = False
+                time.sleep(0.1)
+                print(keymap[keycode_LUT.index(key_event.key_number)][1])
+                kbd.release_all()
