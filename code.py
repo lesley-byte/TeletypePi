@@ -49,9 +49,9 @@ keymap1 = {  # The assignment of keyboard values to the addresses above
     (21): (0, "I"),
     (22): (0, "O"),
     (23): (0, "P"),
-    (24): (0, "LINE FEED"),
-    (25): (0, "RETURN"),
-    (26): (0, "REAL CONTROL BUTTON"),
+    (24): (0, "LINE FEED"), # NEEDS TO CHANGE
+    (25): (0, "RETURN"), # NEEDS TO CHANGE
+    (26): (0, "REAL CONTROL BUTTON"), # NEEDS TO CHANGE
     (27): (0, "A"),
     (28): (0, "S"),
     (29): (0, "D"),
@@ -62,10 +62,10 @@ keymap1 = {  # The assignment of keyboard values to the addresses above
     (34): (0, "K"),
     (35): (0, "L"),
     (36): (0, ":"),
-    (37): (0, "RUB OUT"),
-    (38): (0, "REPT"),
-    (39): (0, "BREAK"),
-    (40): (0, "REAL SHIFT"),
+    (37): (0, "RUB OUT"), # NEEDS TO CHANGE
+    (38): (0, "REPT"), # NEEDS TO CHANGE
+    (39): (0, "BREAK"), # NEEDS TO CHANGE
+    (40): (0, "REAL SHIFT"), # NEEDS TO CHANGE
     (41): (0, "Z"),
     (42): (0, "X"),
     (43): (0, "C"),
@@ -76,7 +76,7 @@ keymap1 = {  # The assignment of keyboard values to the addresses above
     (48): (0, ","),
     (49): (0, "."),
     (50): (0, "/"),
-    (51): (0, "REAL SHIFT"),
+    (51): (0, "REAL SHIFT"), # NEEDS TO CHANGE
     (52): (0, Keycode.SPACEBAR),
 }
 
@@ -93,9 +93,9 @@ keymap2 = {  # The assignment of keyboard values to the addresses above
     (9): (0, "SP"),
     (10): (0, "*"),
     (11): (0, Keycode.EQUALS),
-    (12): (0, "HERE IS"),
+    (12): (0, "HERE IS"), # NEEDS TO CHANGE
     (13): (0, Keycode.ESCAPE),
-    (14): (0, "X-ON"),
+    (14): (0, "X-ON"), # NEEDS TO CHANGE
     (15): (0, "W"),
     (16): (0, "E"),
     (17): (0, "R"),
@@ -103,36 +103,36 @@ keymap2 = {  # The assignment of keyboard values to the addresses above
     (19): (0, "Y"),
     (20): (0, "U"),
     (21): (0, "I"),
-    (22): (0, "LEFT ARROW"),
+    (22): (0, "LEFT ARROW"), # NEEDS TO CHANGE
     (23): (0, "@"),
-    (24): (0, "LINE FEED"),
-    (25): (0, "RETURN"),
-    (26): (0, "REAL CONTROL BUTTON"),
+    (24): (0, "LINE FEED"), # NEEDS TO CHANGE
+    (25): (0, "RETURN"), # NEEDS TO CHANGE
+    (26): (0, "REAL CONTROL BUTTON"), # NEEDS TO CHANGE
     (27): (0, "A"),
-    (28): (0, "X-OFF"),
+    (28): (0, "X-OFF"), # NEEDS TO CHANGE
     (29): (0, "D"),
     (30): (0, "F"),
-    (31): (0, "BELL"),
+    (31): (0, "BELL"), # NEEDS TO CHANGE
     (32): (0, "H"),
     (33): (0, "J"),
     (34): (0, "["),
     (35): (0, Keycode.BACKSLASH),
     (36): (0, "+"),
-    (37): (0, "RUB OUT"),
-    (38): (0, "REPT"),
-    (39): (0, "BREAK"),
-    (40): (0, "REAL SHIFT"),
+    (37): (0, "RUB OUT"), # NEEDS TO CHANGE
+    (38): (0, "REPT"), # NEEDS TO CHANGE
+    (39): (0, "BREAK"), # NEEDS TO CHANGE
+    (40): (0, "REAL SHIFT"), # NEEDS TO CHANGE
     (41): (0, "Z"),
     (42): (0, "X"),
     (43): (0, "C"),
     (44): (0, "V"),
     (45): (0, "B"),
-    (46): (0, "UP ARROW"),
+    (46): (0, "UP ARROW"), # NEEDS TO CHANGE
     (47): (0, "]"),
     (48): (0, "<"),
     (49): (0, ">"),
     (50): (0, "?"),
-    (51): (0, "REAL SHIFT"),
+    (51): (0, "REAL SHIFT"), # NEEDS TO CHANGE
     (52): (0, Keycode.SPACEBAR),
 }
 shift_mod = False
