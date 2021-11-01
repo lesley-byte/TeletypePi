@@ -25,7 +25,7 @@ keycode_LUT = [  # The addresses that the microcontroller gives to the keys.
     62,
 ]
 keymap1 = {  # The assignment of keyboard values to the addresses above
-    (0): (1, ""), #shifts to keymap2
+    (0): (0, "1"), #shifts to keymap2 NEEDS TO CHANGE
     (1): (0, "2"),
     (2): (0, "3"),
     (3): (0, "4"),
@@ -49,9 +49,9 @@ keymap1 = {  # The assignment of keyboard values to the addresses above
     (21): (0, "I"),
     (22): (0, "O"),
     (23): (0, "P"),
-    (24): (0, "LINE FEED"), # NEEDS TO CHANGE
-    (25): (0, "RETURN"), # NEEDS TO CHANGE
-    (26): (0, "REAL CONTROL BUTTON"), # NEEDS TO CHANGE
+    (24): (0, """\n"""),  # Line feed?
+    (25): (0, Keycode.RETURN),  # return button?
+    (26): (1, ""), # Control button
     (27): (0, "A"),
     (28): (0, "S"),
     (29): (0, "D"),
@@ -62,10 +62,10 @@ keymap1 = {  # The assignment of keyboard values to the addresses above
     (34): (0, "K"),
     (35): (0, "L"),
     (36): (0, ":"),
-    (37): (0, "RUB OUT"), # NEEDS TO CHANGE
-    (38): (0, "REPT"), # NEEDS TO CHANGE
-    (39): (0, "BREAK"), # NEEDS TO CHANGE
-    (40): (0, "REAL SHIFT"), # NEEDS TO CHANGE
+    (37): (0, Keycode.BACKSPACE),  # Rubout button
+    (38): (0, "REPT"),
+    (39): (0, "BREAK"),
+    (40): (1, ""), # Shift button
     (41): (0, "Z"),
     (42): (0, "X"),
     (43): (0, "C"),
@@ -76,12 +76,12 @@ keymap1 = {  # The assignment of keyboard values to the addresses above
     (48): (0, ","),
     (49): (0, "."),
     (50): (0, "/"),
-    (51): (0, "REAL SHIFT"), # NEEDS TO CHANGE
+    (51): (1, ""), # Shift button
     (52): (0, Keycode.SPACEBAR),
 }
 
 keymap2 = {  # The assignment of keyboard values to the addresses above
-    (0): (3, ""), # Shifts back to keymap1
+    (0): (0, "!"), # Shifts back to keymap1
     (1): (0, """\""""),
     (2): (0, "#"),
     (3): (0, "$"),
@@ -93,9 +93,9 @@ keymap2 = {  # The assignment of keyboard values to the addresses above
     (9): (0, "SP"),
     (10): (0, "*"),
     (11): (0, Keycode.EQUALS),
-    (12): (0, "HERE IS"), # NEEDS TO CHANGE
+    (12): (0, "HERE IS"),
     (13): (0, Keycode.ESCAPE),
-    (14): (0, "X-ON"), # NEEDS TO CHANGE
+    (14): (0, "X-ON"),
     (15): (0, "W"),
     (16): (0, "E"),
     (17): (0, "R"),
@@ -103,40 +103,40 @@ keymap2 = {  # The assignment of keyboard values to the addresses above
     (19): (0, "Y"),
     (20): (0, "U"),
     (21): (0, "I"),
-    (22): (0, "LEFT ARROW"), # NEEDS TO CHANGE
+    (22): (0, "LEFT ARROW"),
     (23): (0, "@"),
-    (24): (0, "LINE FEED"), # NEEDS TO CHANGE
-    (25): (0, "RETURN"), # NEEDS TO CHANGE
-    (26): (0, "REAL CONTROL BUTTON"), # NEEDS TO CHANGE
+    (24): (0, """\n"""),   #Line feed?
+    (25): (0, Keycode.RETURN),
+    (26): (1, ""), # Control button
     (27): (0, "A"),
-    (28): (0, "X-OFF"), # NEEDS TO CHANGE
+    (28): (0, "X-OFF"),
     (29): (0, "D"),
     (30): (0, "F"),
-    (31): (0, "BELL"), # NEEDS TO CHANGE
+    (31): (0, "BELL"),
     (32): (0, "H"),
     (33): (0, "J"),
     (34): (0, "["),
     (35): (0, Keycode.BACKSLASH),
     (36): (0, "+"),
-    (37): (0, "RUB OUT"), # NEEDS TO CHANGE
-    (38): (0, "REPT"), # NEEDS TO CHANGE
-    (39): (0, "BREAK"), # NEEDS TO CHANGE
-    (40): (0, "REAL SHIFT"), # NEEDS TO CHANGE
+    (37): (0, Keycode.DELETE),  # Rubout button
+    (38): (0, "REPT"),
+    (39): (0, "BREAK"),
+    (40): (1, ""), # Shift button
     (41): (0, "Z"),
     (42): (0, "X"),
     (43): (0, "C"),
     (44): (0, "V"),
     (45): (0, "B"),
-    (46): (0, "UP ARROW"), # NEEDS TO CHANGE
+    (46): (0, "UP ARROW"),
     (47): (0, "]"),
     (48): (0, "<"),
     (49): (0, ">"),
     (50): (0, "?"),
-    (51): (0, "REAL SHIFT"), # NEEDS TO CHANGE
+    (51): (1, ""), # Shift button
     (52): (0, Keycode.SPACEBAR),
 }
 shift_mod = False
-ctrl_mod = False  
+ctrl_mod = False
 keymap = keymap1
 
 
@@ -154,12 +154,12 @@ while True:
                 shift_mod = False
                 keymap = keymap1
                 # somewhere here i need to unshift maybe?
-                        
+
             if shift_mod is False and ctrl_mod is False:
                 # kbd.press(keymap[keycode_LUT.index(key_event.key_number)][1])
                 if isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), str):  # If it's a string...
                     keyboard_layout.write((keymap[keycode_LUT.index(key_event.key_number)][1]))  # ...Print the string
-                    
+
                 elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), int):  # If its a single key
                     keyboard.press((keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
                     keyboard.release_all()  # ..."Release"!
@@ -169,17 +169,17 @@ while True:
                 print(keymap[keycode_LUT.index(key_event.key_number)][1])
             elif shift_mod is True and ctrl_mod is False:
                 # kbd.press(Keycode.SHIFT, keymap[keycode_LUT.index(key_event.key_number)][1])
-                
+
                 if isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), str):  # If it's a string...
                     keyboard_layout.write(keymap[keycode_LUT.index(key_event.key_number)][1]) # ...Print the string
                 elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), int):  # If its a single key
                     keyboard.press((keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
                     keyboard.release_all()  # ..."Release"!
-                
+
                 elif isinstance((keymap[keycode_LUT.index(key_event.key_number)][1]), (list, tuple)):  # If its multiple keys
                     keyboard.press(*(keymap[keycode_LUT.index(key_event.key_number)][1]))  # "Press"...
                     keyboard.release_all()  # ..."Release"
-                    
+
                 print(keymap[keycode_LUT.index(key_event.key_number)][1])
             elif shift_mod is False and ctrl_mod is True:
                 # kbd.press(Keycode.CONTROL, keymap[keycode_LUT.index(key_event.key_number)][1])
@@ -200,10 +200,10 @@ while True:
                    0       )"""
                 print(keymap[keycode_LUT.index(key_event.key_number)][1])
 
-        if key_event.released: 
+        if key_event.released:
             print("i'm actually registering a release")
             #if keymap[keycode_LUT.index(key_event.key_number)][0] == 1:  # un-shift
-            if (key_event.key_number) == 1:  # un-shift# un-shift  *******************you have to ask it about key_event.key_number if you want to ask if a specific key was released!!!!
+            if (key_event.key_number) == 28 or 43 or 54:  # un-shift# un-shift  *******************you have to ask it about key_event.key_number if you want to ask if a specific key was released!!!!
                 shift_mod = False
                 keymap = keymap1
                 print("im actually registering an un-shift")
