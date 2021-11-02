@@ -104,7 +104,7 @@ keymap1 = {  # The assignment of keyboard values to the addresses above
 }
 
 keymap2 = {  # The assignment of keyboard values to the addresses above
-    (0): (0, "!"),  # Shifts back to keymap1
+    (0): (0, "!"),  
     (1): (0, """\""""),
     (2): (0, "#"),
     (3): (0, "$"),
