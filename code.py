@@ -2,23 +2,23 @@
 If you enter the repl and type:
 >>> from adafruit_hid.keycode import Keycode
 >>> print(dir(Keycode))
-
 then you will get the list of possible keycodes.  This can be helpful in certain circumstances. Here is a copy of that list as of 11/2/21:
-['__class__', '__module__', '__name__', '__qualname__', '__bases__', '__dict__', 'C', 'M', 'A', 
-'B', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 
-'W', 'X', 'Y', 'Z', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE', 
-'ZERO', 'ENTER', 'RETURN', 'ESCAPE', 'BACKSPACE', 'TAB', 'SPACEBAR', 'SPACE', 'MINUS', 'EQUALS', 
-'LEFT_BRACKET', 'RIGHT_BRACKET', 'BACKSLASH', 'POUND', 'SEMICOLON', 'QUOTE', 'GRAVE_ACCENT', 
-'COMMA', 'PERIOD', 'FORWARD_SLASH', 'CAPS_LOCK', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 
-'F9', 'F10', 'F11', 'F12', 'PRINT_SCREEN', 'SCROLL_LOCK', 'PAUSE', 'INSERT', 'HOME', 'PAGE_UP', 
-'DELETE', 'END', 'PAGE_DOWN', 'RIGHT_ARROW', 'LEFT_ARROW', 'DOWN_ARROW', 'UP_ARROW', 
-'KEYPAD_NUMLOCK', 'KEYPAD_FORWARD_SLASH', 'KEYPAD_ASTERISK', 'KEYPAD_MINUS', 'KEYPAD_PLUS', 
-'KEYPAD_ENTER', 'KEYPAD_ONE', 'KEYPAD_TWO', 'KEYPAD_THREE', 'KEYPAD_FOUR', 'KEYPAD_FIVE', 
-'KEYPAD_SIX', 'KEYPAD_SEVEN', 'KEYPAD_EIGHT', 'KEYPAD_NINE', 'KEYPAD_ZERO', 'KEYPAD_PERIOD', 
-'KEYPAD_BACKSLASH', 'APPLICATION', 'POWER', 'KEYPAD_EQUALS', 'F13', 'F14', 'F15', 'F16', 'F17', 
-'F18', 'F19', 'F20', 'F21', 'F22', 'F23', 'F24', 'LEFT_CONTROL', 'CONTROL', 'LEFT_SHIFT', 'SHIFT', 
-'LEFT_ALT', 'ALT', 'OPTION', 'LEFT_GUI', 'GUI', 'WINDOWS', 'COMMAND', 'RIGHT_CONTROL', 
+['__class__', '__module__', '__name__', '__qualname__', '__bases__', '__dict__', 'C', 'M', 'A',
+'B', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+'W', 'X', 'Y', 'Z', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE',
+'ZERO', 'ENTER', 'RETURN', 'ESCAPE', 'BACKSPACE', 'TAB', 'SPACEBAR', 'SPACE', 'MINUS', 'EQUALS',
+'LEFT_BRACKET', 'RIGHT_BRACKET', 'BACKSLASH', 'POUND', 'SEMICOLON', 'QUOTE', 'GRAVE_ACCENT',
+'COMMA', 'PERIOD', 'FORWARD_SLASH', 'CAPS_LOCK', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8',
+'F9', 'F10', 'F11', 'F12', 'PRINT_SCREEN', 'SCROLL_LOCK', 'PAUSE', 'INSERT', 'HOME', 'PAGE_UP',
+'DELETE', 'END', 'PAGE_DOWN', 'RIGHT_ARROW', 'LEFT_ARROW', 'DOWN_ARROW', 'UP_ARROW',
+'KEYPAD_NUMLOCK', 'KEYPAD_FORWARD_SLASH', 'KEYPAD_ASTERISK', 'KEYPAD_MINUS', 'KEYPAD_PLUS',
+'KEYPAD_ENTER', 'KEYPAD_ONE', 'KEYPAD_TWO', 'KEYPAD_THREE', 'KEYPAD_FOUR', 'KEYPAD_FIVE',
+'KEYPAD_SIX', 'KEYPAD_SEVEN', 'KEYPAD_EIGHT', 'KEYPAD_NINE', 'KEYPAD_ZERO', 'KEYPAD_PERIOD',
+'KEYPAD_BACKSLASH', 'APPLICATION', 'POWER', 'KEYPAD_EQUALS', 'F13', 'F14', 'F15', 'F16', 'F17',
+'F18', 'F19', 'F20', 'F21', 'F22', 'F23', 'F24', 'LEFT_CONTROL', 'CONTROL', 'LEFT_SHIFT', 'SHIFT',
+'LEFT_ALT', 'ALT', 'OPTION', 'LEFT_GUI', 'GUI', 'WINDOWS', 'COMMAND', 'RIGHT_CONTROL',
 'RIGHT_SHIFT', 'RIGHT_ALT', 'RIGHT_GUI', 'modifier_bit']  """
+
 import os
 import board
 import time
@@ -46,7 +46,7 @@ keycode_LUT = [  # The addresses that the microcontroller gives to the keys.
     62,
 ]
 keymap1 = {  # The assignment of keyboard values to the addresses above
-    (0): (0, "1"), #shifts to keymap2 NEEDS TO CHANGE
+    (0): (0, "1"),
     (1): (0, "2"),
     (2): (0, "3"),
     (3): (0, "4"),
@@ -58,7 +58,7 @@ keymap1 = {  # The assignment of keyboard values to the addresses above
     (9): (0, "0"),
     (10): (0, ":"),
     (11): (0, Keycode.KEYPAD_MINUS),
-    (12): (0, "HERE IS"),
+    (12): (0, "HERE IS"), # Still don't understand this button....  *****
     (13): (0, Keycode.ESCAPE),
     (14): (0, "Q"),
     (15): (0, "W"),
@@ -84,8 +84,8 @@ keymap1 = {  # The assignment of keyboard values to the addresses above
     (35): (0, "L"),
     (36): (0, ":"),
     (37): (0, Keycode.BACKSPACE),  # Rubout button
-    (38): (0, "REPT"),
-    (39): (0, "BREAK"),
+    (38): (0, ""),  #  REPT BUTTON: Since keyboard repeat is now an automatic function, i don't know that i can replicate the function of this button....eeek
+    (39): (0, Keycode.PAUSE),  # The Break button is also called the Pause key...handy tip.
     (40): (1, ""), # Shift button
     (41): (0, "Z"),
     (42): (0, "X"),
@@ -114,9 +114,9 @@ keymap2 = {  # The assignment of keyboard values to the addresses above
     (9): (0, "SP"),
     (10): (0, "*"),
     (11): (0, Keycode.EQUALS),
-    (12): (0, "HERE IS"),
+    (12): (0, "HERE IS"),  # Still don't understand this button *****
     (13): (0, Keycode.ESCAPE),
-    (14): (0, "X-ON"),
+    (14): (0, "X-ON"), # Still don't understand this button....  *****
     (15): (0, "W"),
     (16): (0, "E"),
     (17): (0, "R"),
@@ -124,31 +124,31 @@ keymap2 = {  # The assignment of keyboard values to the addresses above
     (19): (0, "Y"),
     (20): (0, "U"),
     (21): (0, "I"),
-    (22): (0, "LEFT ARROW"),
+    (22): (0, Keycode.LEFT_ARROW),
     (23): (0, "@"),
     (24): (0, """\n"""),   #Line feed?
     (25): (0, Keycode.RETURN),
     (26): (1, ""), # Control button
     (27): (0, "A"),
-    (28): (0, "X-OFF"),
+    (28): (0, "X-OFF"), # Still don't understand this button....  *****
     (29): (0, "D"),
     (30): (0, "F"),
-    (31): (0, "BELL"),
+    (31): (0, "BELL"), # Still don't understand this button....  *****
     (32): (0, "H"),
     (33): (0, "J"),
     (34): (0, "["),
     (35): (0, Keycode.BACKSLASH),
     (36): (0, "+"),
     (37): (0, Keycode.DELETE),  # Rubout button
-    (38): (0, "REPT"),
-    (39): (0, "BREAK"),
+    (38): (0, ""),  #  REPT BUTTON: Since keyboard repeat is now an automatic function, i don't know that i can replicate the function of this button....eeek  *****
+    (39): (0, Keycode.PAUSE),  # The Break button is also called the Pause key...handy tip.
     (40): (1, ""), # Shift button
     (41): (0, "Z"),
     (42): (0, "X"),
     (43): (0, "C"),
     (44): (0, "V"),
     (45): (0, "B"),
-    (46): (0, "UP ARROW"),
+    (46): (0, Keycode.UP_ARROW),
     (47): (0, "]"),
     (48): (0, "<"),
     (49): (0, ">"),
